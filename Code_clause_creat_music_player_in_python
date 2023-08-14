@@ -1,0 +1,41 @@
+#Importing tkinter,pygame modules.
+import tkinter as tk
+import pygame
+#importing all tkinter module fuctions.
+from tkinter import*
+#importing mixer from pygame module.
+from pygame import mixer
+#importing os module
+import os
+#constructors 
+pygame.init()
+mixer.init()
+#creating a window box
+root=Tk()
+# file location 
+cwd=os.chdir('/storage/emulated/0/Music/music player')
+# generate  list of songs from the above file
+songs=os.listdir(cwd)
+#creating a listbox
+listbox=tk.Listbox(root,width=34)
+#inserting songs  into listbox. 
+for s in songs:
+	listbox.insert(END,s)
+listbox.place(x=100,y=10)
+#creating functions.
+def start_song():
+	csong=listbox.get(ACTIVE)
+	mixer.music.load(csong)
+	mixer.music.play()
+def stop_song():
+	mixer.music.pause()
+def resume_song():
+	mixer.music.unpause()
+def stop():
+	mixer.music.stop()
+#creating buttons.
+tk.Button(root,text="resume",background="pink",command=resume_song).place(x=290,y=550)			
+tk.Button(root,text="stop",background="red",command=stop).place(x=530,y=550)
+tk.Button(root,text="start",background="green",command=start_song).place(x=100,y=550)
+tk.Button(root,text="pause ",background="blue",command=stop_song).place(x=720,y=550)
+tk.mainloop()

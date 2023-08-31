@@ -1,0 +1,99 @@
+problem=" "
+def clear():
+	global problem
+	problem=" "
+	Label1.config(text=problem)
+	
+def show(value):
+	global problem
+	problem=problem+value
+	Label1.config(text=problem)
+	
+def calculation():
+	if problem !=" ":
+		try: 
+			global res
+			res=eval(problem)
+			Label1.config(text=str(problem)+"="+str(res))
+		except Exception as e:
+			Label1.config(text="error")
+			
+def ans():
+	try:
+		Label1.config(text=str(res))
+	except :
+		Label1.config(text="no answer saved")
+import tkinter as tk
+from tkinter import *
+# Create the main window
+root = tk.Tk()
+root.title("calculator 1.O")
+root.geometry("100x150")
+ob=tk.Frame(root)
+ob.pack()
+		
+#creat a label
+Label1=Label(root,text=" ",width=21,height=5,bg="green",fg="blue")
+Label1.place(x=30,y=5)
+
+button1=Button(root,text="clear",command=clear,width=2)
+button1.place(x=180,y=660)
+
+button2=Button(root,text="1",command=lambda:show("1"))
+button2.place(x=30,y=280)
+
+button3=Button(root,text="2",command=lambda:show("2"))
+button3.place(x=165,y=280)
+
+button4=Button(root,text="3",command=lambda:show("3"))
+button4.place(x=165,y=375)
+
+button5=Button(root,text="4",command=lambda:show("4"))
+button5.place(x=165,y=470)
+
+button6=Button(root,text="5",command=lambda:show("5"))
+button6.place(x=30,y=375)
+
+button7=Button(root,text="6",command=lambda:show("6"))
+button7.place(x=30,y=470)
+
+button8=Button(root,text="7",command=lambda:show("7"))
+button8.place(x=300,y=280)
+
+button9=Button(root,text="8",command=lambda:show("8"))
+button9.place(x=300,y=375)
+
+button10=Button(root,text="9",command=lambda:show("9"))
+button10.place(x=300,y=470)
+
+button11=Button(root,text="+",command=lambda:show("+"))
+button11.place(x=430,y=470)
+
+button12=Button(root,text="--",command=lambda:show("-"))
+button12.place(x=430,y=375)
+
+button13=Button(root,text="/ ",command=lambda:show("/"))
+button13.place(x=430,y=280)
+
+button14=Button(root,text="×",command=lambda:show("*"))
+button14.place(x=430,y=565)
+
+button15=Button(root,text=" (",command=lambda:show("("))
+button15.place(x=30,y=565)
+
+button16=Button(root,text=") ",command=lambda:show(")"))
+button16.place(x=165,y=565)
+
+button17=Button(root,text="0",command=lambda:show("0"))
+button17.place(x=300,y=565)
+
+button18=Button(root,text="=",command=calculation)
+button18.place(x=430,y=660)
+
+button19=Button(root,text="preans",command=ans,width=2)
+button19.place(x=30,y=660)
+
+button20=Button(root,text=".",command=lambda:show("."))
+button20.place(x=330,y=660)
+
+tk.mainloop()
